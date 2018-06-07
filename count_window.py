@@ -4,9 +4,10 @@ import pandas as pd
 from tqdm import tqdm
 import numpy as np
 from sklearn.cluster import KMeans
+from constants import AP_LOC_DICT
 
 SRC_DIR = '/Users/xujiayu/毕设/data/user_data'
-DEST_DIR = '/Users/xujiayu/毕设/data/count_period'
+DEST_DIR = '/Users/xujiayu/毕设/data/count_window'
 
 # 提取某个用户某段时间(以7点到9点为例, 或者11点到13点, 或者17点到19点)的数据, 按时间切片(时间窗口长度以5分钟或者10分钟为例)聚类, 特征为次数
 def main(filename, k, start_hour='07', end_hour='09'):
@@ -23,8 +24,8 @@ def main(filename, k, start_hour='07', end_hour='09'):
 		minutes_df['5_minutes'] = (minutes_df['ts'] / 60 / 5).astype(int)
 		minutes_df = minutes_df.drop('ts', axis=1)
 		pivot_df = pd.pivot_table(minutes_df, values='rss', index=['user_mac_addr', '5_minutes'], columns='AP', aggfunc=len, fill_value=0)
+		pivot_df.columns = [AP_LOC_DICT[AP] for AP in pivot_df.columns.values]
 		if k == 0:
-			print(len(pivot_df.columns))
 			label = KMeans(n_clusters=len(pivot_df.columns), random_state=1993).fit_predict(pivot_df)
 		else:
 			label = KMeans(n_clusters=k, random_state=1993).fit_predict(pivot_df)
@@ -36,6 +37,6 @@ def main(filename, k, start_hour='07', end_hour='09'):
 
 if __name__ == '__main__':
 	try:
-		main('000000000000.csv', k=0, start_hour='11', end_hour='13')
+		main('000000000000.csv', k=0, start_hour='07', end_hour='09')
 	except Exception as e:
 		raise e
