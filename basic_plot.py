@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 from get_path import get_path
 
 path = get_path()
-K = 28
+K = 2
 
 def plot_kmeans():
 	try:
@@ -17,17 +17,21 @@ def plot_kmeans():
 		# df_1 = df_0.values.reshape(41, 50)
 		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/count_kmeans/000000000000.csv')
 		# df_1 = df_0.T
-		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/count_kmeans/count_center_kmeans-2-1528335931.csv')
+		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/count_kmeans/count_sample_kmeans-3-k30-1528684211.csv')
 		# df_1 = df_0.T
-		df_0 = pd.read_csv('/Users/xujiayu/毕设/data/count_window/000000000000-07_09-k0.csv')
+		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/count_window/000000000000-07_09-k0.csv')
+		# df_1 = df_0.T
+		df_0 = pd.read_csv('/Users/xujiayu/毕设/data/AP_cnt/14E4E6E173FE/AP_cnt-k2.csv')
 		df_1 = df_0.T
+		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/traj_kmeans/000000000000-k9.csv')
+		# df_1 = df_0.T
 		for i in range(K):
 			df = df_0[df_0['label'] == i]
 			for j in range(len(df)):
 				r = np.array(df[df['label'] == i].drop('label', axis=1).iloc[j])
 				print(r)
-				plt.xlabel('AP')
-				plt.ylabel('rss')
+				# plt.xlabel('AP')
+				# plt.ylabel('rss')
 				plt.plot(r)
 			plt.show()
 	except Exception as e:
