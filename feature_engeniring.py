@@ -37,6 +37,7 @@ def rss_kmeans(filename):
 	try:
 		pivot_df = rss_kmeans_helper(filename)
 		label = KMeans(n_clusters=len(pivot_df.columns), random_state=1993).fit_predict(pivot_df)
+		pivot_df.columns = [AP_LOC_DICT[AP] for AP in pivot_df.columns.values]
 		pivot_df['label'] = label
 		pivot_df.to_csv(os.path.join(DEST_DIR_RSS, filename), index=False)
 	except Exception as e:
@@ -53,6 +54,7 @@ def rss_center_kmeans(num_sample, k0, k1):
 				concat_list.append(pd.DataFrame(KMeans(n_clusters=k0, random_state=1993).fit(pivot_df).cluster_centers_, columns=pivot_df.columns))
 		center_df = pd.concat(concat_list, axis=0, ignore_index=True).fillna(-90)
 		label = KMeans(n_clusters=k1, random_state=1993).fit_predict(center_df)
+		center_df.columns = [AP_LOC_DICT[AP] for AP in center_df.columns.values]
 		center_df['label'] = label
 		dest_filename = 'rss_center_kmeans-%s-k_%s_%s-%s.csv' % (str(num_sample), str(k0), str(k1), str(int(time.time())))
 		center_df.to_csv(os.path.join(DEST_DIR_RSS, dest_filename), index=False)
@@ -72,6 +74,7 @@ def count_kmeans(filename):
 	try:
 		pivot_df = count_kmeans_helper(filename)
 		label = KMeans(n_clusters=len(pivot_df.columns), random_state=1993).fit_predict(pivot_df)
+		pivot_df.columns = [AP_LOC_DICT[AP] for AP in pivot_df.columns.values]
 		pivot_df['label'] = label
 		pivot_df.to_csv(os.path.join(DEST_DIR_CNT, filename), index=False)
 	except Exception as e:
@@ -89,6 +92,7 @@ def count_center_kmeans(num_sample, k0, k1):
 				concat_list.append(pd.DataFrame(KMeans(n_clusters=k0, random_state=1993).fit(pivot_df).cluster_centers_, columns=pivot_df.columns))
 		center_df = pd.concat(concat_list, axis=0, ignore_index=True).fillna(0)
 		label = KMeans(n_clusters=k1, random_state=1993).fit_predict(center_df)
+		center_df.columns = [AP_LOC_DICT[AP] for AP in center_df.columns.values]
 		center_df['label'] = label
 		dest_filename = 'count_center_kmeans-%s-k_%s_%s-%s.csv' % (str(num_sample), str(k0), str(k1), str(int(time.time())))
 		center_df.to_csv(os.path.join(DEST_DIR_CNT, dest_filename), index=False)
@@ -110,7 +114,6 @@ def count_sample_kmeans(num_sample, k):
 		pivot_df['label'] = label
 		dest_filename = 'count_sample_kmeans-%s-k%s-%s.csv' % (str(num_sample), str(k), str(int(time.time())))
 		pivot_df.to_csv(os.path.join(DEST_DIR_CNT, dest_filename), index=False)
-		# pivot_df.to_csv(os.path.join(DEST_DIR_CNT, dest_filename))
 	except Exception as e:
 		print("count_sample_kmeans error: %s" % e)
 
@@ -120,7 +123,6 @@ def count_kmeans_helper(filename):
 		minutes_df['user_mac_addr'] = minutes_df['user_mac_addr'].astype(str)
 		minutes_df['hours'] = minutes_df['minutes'].astype(str).str.slice(0, 10)
 		pivot_df = pd.pivot_table(minutes_df, values='rss', index=['user_mac_addr', 'hours'], columns='AP', aggfunc=len, fill_value=0)
-		# pivot_df.columns = [AP_LOC_DICT[AP] for AP in pivot_df.columns.values]
 		return pivot_df
 	except Exception as e:
 		print("count_kmeans_helper error: %s" % e)

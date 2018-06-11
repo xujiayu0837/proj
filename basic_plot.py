@@ -21,10 +21,10 @@ def plot_kmeans():
 		# df_1 = df_0.T
 		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/count_window/000000000000-07_09-k0.csv')
 		# df_1 = df_0.T
-		df_0 = pd.read_csv('/Users/xujiayu/毕设/data/AP_cnt/14E4E6E173FE/AP_cnt-k2.csv')
-		df_1 = df_0.T
-		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/traj_kmeans/000000000000-k9.csv')
+		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/AP_cnt/14E4E6E173FE/AP_cnt-k2.csv')
 		# df_1 = df_0.T
+		df_0 = pd.read_csv('/Users/xujiayu/毕设/data/traj_kmeans/000000000000-k9.csv')
+		df_1 = df_0.T
 		for i in range(K):
 			df = df_0[df_0['label'] == i]
 			for j in range(len(df)):
