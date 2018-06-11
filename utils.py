@@ -138,6 +138,18 @@ def find_24h_users():
 	except Exception as e:
 		print("find_24h_users error: %s" % e)
 
+def convert_minutes(minutes_df):
+	try:
+		minutes_df['dt'] = pd.to_datetime(minutes_df['minutes'], format="%Y%m%d%H%M") + datetime.timedelta(hours=-8)
+		minutes_df = minutes_df.drop('minutes', axis=1)
+		minutes_df['ts'] = minutes_df['dt'].astype(int) // 10 ** 9
+		minutes_df = minutes_df.drop('dt', axis=1)
+		minutes_df['5_minutes'] = (minutes_df['ts'] / 60 / 5).astype(int)
+		minutes_df = minutes_df.drop('ts', axis=1)
+		return minutes_df
+	except Exception as e:
+		print("convert_minutes error: %s" % e)
+
 if __name__ == '__main__':
 	try:
 		# dir_list = [os.path.join(SRC_DIR, sub_dir) for sub_dir in os.listdir(SRC_DIR) if not sub_dir.startswith('.')]
