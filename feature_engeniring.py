@@ -164,10 +164,10 @@ if __name__ == '__main__':
 		# pool.map(count_user_AP_pair, dir_list)
 		# pool.close()
 		# pool.join()
-		rss_kmeans('00044B6631FD.csv')
+		# rss_kmeans('00044B6631FD.csv')
 		# rss_center_kmeans(2, k0=0, k1=4)
 		# count_kmeans('000000000000.csv')
-		# count_sample_kmeans(3, k=31)
+		count_sample_kmeans(3, k=31)
 		# count_center_kmeans(2, k0=0, k1=3)
 		# aux()
 	except Exception as e:
