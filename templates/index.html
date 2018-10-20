@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/plot.css' %}">
+    <script src="{% static 'polls/js/echarts.js' %}"></script>
+    <script src="{% static 'polls/js/jquery-3.2.1.js' %}"></script>
+</head>
+<body>
+	<div class="div">
+		<div class="div1">
+			<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    		<div id="user"></div>
+    		<div id="period">
+    			<div id="period1"></div>
+    			<div id="period2"></div>
+    			<div id="period3"></div>
+    		</div>
+    		<div id="loc">
+    			<div id="loc1"></div>
+    			<div id="loc2"></div>
+    		</div>
+		</div>
+	</div>
+        <script src="{% static 'polls/js/plot.js' %}"></script>
+</body>
+</html>
