@@ -22,6 +22,9 @@ function user() {
 			    //     data:['销量']
 			    // },
 			    xAxis: {
+			    	axisLine: {
+			    		onZero: false
+			    	},
 			    	name: 'AP',
 			    	data: ['R_1','R_1','R_10','R_10','R_3','R_4','R_3','R_5','R_8','R_5','R_29','R_2','R_2','R_10','R_29','R_4','T_1','S_2','T_4','T_4','S_2','S_1','T_6','S_1','T_1','T_3','T_3','R_8']
 			    },
@@ -29,7 +32,8 @@ function user() {
 					// data: ['mac_1', 'mac_2', 'mac_3', 'mac_4', 'mac_5', 'mac_6', 'mac_7', 'mac_8', 'mac_9', 'mac_10', 'mac_11', 'mac_12', 'mac_13', 'mac_14', 'mac_15', 'mac_16', 'mac_17', 'mac_18', 'mac_19', 'mac_20', 'mac_21', 'mac_22', 'mac_23', 'mac_24', 'mac_25', 'mac_26', 'mac_27', 'mac_28', 'mac_29', 'mac_30', 'mac_31', 'mac_32', 'mac_33', 'mac_34', 'mac_35', 'mac_36', 'mac_37', 'mac_38', 'mac_39', 'mac_40']
 			  //   },
 			    yAxis: {
-			    	name: 'rss'
+			    	name: 'rss',
+			    	scale: true
 			    },
 			    series: userSeries
 			    // series: [
@@ -182,6 +186,7 @@ function loc() {
 			$.each(d.data, function(index, item) {
 				locSeries.push({"type": "line", "data": item});
 			});
+			locSeries.push({"type": "line", "markLine": {"data": [{"yAxis": 3000}], "silent": true}})
 			var myChart = echarts.init(document.getElementById('loc1'));
 			var option = {
 			    title: {
@@ -284,6 +289,7 @@ function loc2() {
 			$.each(d.data, function(index, item) {
 				locSeries2.push({"type": "line", "data": item});
 			});
+			locSeries2.push({"type": "line", "markLine": {"data": [{"yAxis": 3000}], "silent": true}})
 			var myChart = echarts.init(document.getElementById('loc2'));
 			var option = {
 			    title: {
