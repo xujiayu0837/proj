@@ -15,7 +15,7 @@ def main(dir):
 		for filename in filename_list:
 			src_path = os.path.join(dir, filename)
 			dest_path = os.path.join(dest, filename)
-			minutes_df = pd.read_csv(src_path, sep='|')
+			minutes_df = pd.read_csv(src_path, sep='|', dtype={'AP': 'str'})
 			user_AP_cnt_df = minutes_df.groupby(['user_mac_addr', 'AP']).size().reset_index(name='user_AP_cnt')
 			user_AP_cnt_df.to_csv(dest_path, index=False)
 	except Exception as e:
