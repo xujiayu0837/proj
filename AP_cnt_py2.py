@@ -48,7 +48,7 @@ def aux():
 		label = KMeans(n_clusters=K, random_state=1993).fit_predict(pivot_df)
 		pivot_df.columns = ['_'.join(['hour', hour]) for hour in pivot_df.columns.values]
 		pivot_df['label'] = label
-		print(pivot_df.head())
+		# print(pivot_df.head())
 		# engine = create_engine('mysql+mysqldb://root:root@localhost:3306/django_tutorial')
 		# pivot_df.to_sql('polls_ttt', con=engine, if_exists='append', index=False)
 		# pivot_df.to_csv(dest_path, index=False)
