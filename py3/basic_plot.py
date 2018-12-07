@@ -5,15 +5,15 @@ from matplotlib import pyplot as plt
 from get_path import get_path
 
 path = get_path()
-K = 2
+K = 11
 
 def plot_kmeans():
 	try:
-		# df_0 = pd.read_csv(os.path.join(path, '../centers_prediction_gmm_k3_0.csv'))
+		# df_0 = pd.read_csv(os.path.join(path, '../../centers_prediction_gmm_k3_0.csv'))
 		# df_1 = df_0.values.reshape(41, 50)
-		# df_0 = pd.read_csv(os.path.join(path, '../centers_prediction_kmeans_k3_0.csv'))
-		# df_1 = df_0.values.reshape(41, 50)
-		# df_0 = pd.read_csv(os.path.join(path, '../centers_prediction_kmeans_k19_0.csv'))
+		df_0 = pd.read_csv(os.path.join(path, '../../centers_prediction_k11_0.csv'))
+		df_1 = df_0.values.reshape(41, 50)
+		# df_0 = pd.read_csv(os.path.join(path, '../../centers_prediction_3.csv'))
 		# df_1 = df_0.values.reshape(41, 50)
 		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/count_kmeans/000000000000.csv')
 		# df_1 = df_0.T
@@ -23,8 +23,8 @@ def plot_kmeans():
 		# df_1 = df_0.T
 		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/AP_cnt/14E4E6E173FE/AP_cnt-k2.csv')
 		# df_1 = df_0.T
-		df_0 = pd.read_csv('/Users/xujiayu/毕设/data/traj_kmeans/000000000000-k9.csv')
-		df_1 = df_0.T
+		# df_0 = pd.read_csv('/Users/xujiayu/毕设/data/traj_kmeans/000000000000-k9.csv')
+		# df_1 = df_0.T
 		for i in range(K):
 			df = df_0[df_0['label'] == i]
 			for j in range(len(df)):

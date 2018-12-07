@@ -86,19 +86,29 @@ def hours_handle(dir):
 
 def aux():
 	try:
-		src_path = '/Users/xujiayu/毕设/data/scandata/EC172FE3B340/20171027.csv'
-		dest_path = '/Users/xujiayu/Downloads/20171027.csv'
+		src_path = '/Users/xujiayu/毕设/data/scandata/0C8268C7E138/20171019.csv'
 		data = pd.read_csv(src_path, sep='|')
 		data = data[(data['ts'].astype(str).str.len() == 10) & (data['rss'].astype(str).str.len() == 3)]
 		data = data[data['rss'].astype(int) > -90]
 		data['dt'] = pd.to_datetime(data['ts'], unit='s') + datetime.timedelta(hours=8)
 		data = data.drop('ts', axis=1)
-		data['minutes'] = data['dt'].dt.strftime("%Y%m%d%H%M")
+		data['hours'] = data['dt'].dt.strftime("%Y%m%d%H")
 		data = data.drop('dt', axis=1)
-		# print(data[data['rss'].astype(str).str.len() != 3])
-		data['rss'] = data['rss'].astype(int)
-		minutes_df = data.groupby(['user_mac_addr', 'AP', 'minutes']).agg({'rss': 'max'}).reset_index()
-		minutes_df.to_csv(dest_path, index=False, sep='|')
+		hours_df = data.groupby(['user_mac_addr', 'AP', 'hours']).agg({'rss': 'max'}).reset_index()
+
+		# src_path = '/Users/xujiayu/毕设/data/scandata/EC172FE3B340/20171027.csv'
+		# dest_path = '/Users/xujiayu/Downloads/20171027.csv'
+		# data = pd.read_csv(src_path, sep='|')
+		# data = data[(data['ts'].astype(str).str.len() == 10) & (data['rss'].astype(str).str.len() == 3)]
+		# data = data[data['rss'].astype(int) > -90]
+		# data['dt'] = pd.to_datetime(data['ts'], unit='s') + datetime.timedelta(hours=8)
+		# data = data.drop('ts', axis=1)
+		# data['minutes'] = data['dt'].dt.strftime("%Y%m%d%H%M")
+		# data = data.drop('dt', axis=1)
+		# # print(data[data['rss'].astype(str).str.len() != 3])
+		# data['rss'] = data['rss'].astype(int)
+		# minutes_df = data.groupby(['user_mac_addr', 'AP', 'minutes']).agg({'rss': 'max'}).reset_index()
+		# minutes_df.to_csv(dest_path, index=False, sep='|')
 	except Exception as e:
 		print("aux error: %s" % e)
 		raise e
