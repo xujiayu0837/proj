@@ -23,9 +23,9 @@ LABEL_OUTLIER = 1
 def find_24h_users():
 	try:
 		users_set = set()
-		# for filename in os.listdir(PICKLE_DIR_KMEANS):
-		# 	with open(os.path.join(PICKLE_DIR_KMEANS, filename), 'rb') as fr:
-		# 		users_set = {item for item in pickle.load(fr)}
+		for filename in os.listdir(PICKLE_DIR_KMEANS):
+			with open(os.path.join(PICKLE_DIR_KMEANS, filename), 'rb') as fr:
+				users_set = {item for item in pickle.load(fr)}
 		with open(os.path.join(PICKLE_DIR, '24h_users_pickle.pickle'), 'wb') as fw:
 			pickle.dump(users_set, fw)
 		return users_set
@@ -86,8 +86,8 @@ def hours_count_user_AP_pair(dir):
 		label = kmeans.labels_
 		users_list = hours_user_AP_cnt_df['user_mac_addr'][label == np.argmax(kmeans.cluster_centers_)]
 		pickle_dump(dir, users_list)
-		print(kmeans.cluster_centers_)
-		print('%s, %s' % (len(users_list), hours_user_AP_cnt_df.shape[0]))
+		# print(kmeans.cluster_centers_)
+		# print('%s, %s' % (len(users_list), hours_user_AP_cnt_df.shape[0]))
 	except Exception as e:
 		print "hours_count_user_AP_pair error: %s" % e
 
@@ -204,8 +204,9 @@ if __name__ == '__main__':
 		
 		# dir_list_kmeans = [os.path.join(SRC_DIR_KMEANS, sub_dir) for sub_dir in os.listdir(SRC_DIR_KMEANS) if not sub_dir.startswith('.')]
 		# pool = Pool(4)
-		# pool.map(hours_count_user_AP_pair, dir_list)
+		# res_list = [pool.apply_async(hours_count_user_AP_pair, (dir,)) for dir in dir_list]
 
+		# pool.map(hours_count_user_AP_pair, dir_list)
 		# pool.map(detect_outlier, dir_list)
 		# pool.map(detect_outlier_kmeans, dir_list_kmeans)
 		# pool.map(cmp_two_sol, os.listdir(SRC_DIR))
