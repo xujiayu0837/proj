@@ -6,12 +6,13 @@ from multiprocessing.dummy import Pool as Pool
 import pickle
 import pandas as pd
 from tqdm import tqdm
+from constants import AP_LOC_DICT
 
 SRC_DIR = '/Users/xujiayu/python/scandata1/201710'
 DEST_DIR = '/Users/xujiayu/毕设/data/scandata'
 # SRC_DIR = '/Users/xujiayu/毕设/data/scandata_0526'
 # DEST_DIR = '/Users/xujiayu/毕设/data/minutes_window'
-DIR = '/Users/xujiayu/毕设/data/clean_data'
+DIR = '/Users/xujiayu/毕设/data-180908/AP_cnt'
 PICKLE_DIR_PATH = '/Users/xujiayu/毕设/data/24h_users_pickle/24h_users_pickle.pickle'
 AP_LIST = ['0C8268EE3868', '0C8268EE38EE', '14CF924A98F2', '0C8268C7D518', '0C8268EE7164', 
 '14E4E6E172EA', 'EC172FE3B340', '085700411A86', '0C8268C7E138', '0C8268EE3878', 
@@ -150,6 +151,42 @@ def convert_minutes(minutes_df):
 	except Exception as e:
 		print("convert_minutes error: %s" % e)
 
+def print_django_model_string():
+	try:
+		del(AP_LOC_DICT['85700412700.0'])
+		for k, v in AP_LOC_DICT.items():
+			model = '''
+class Loc_%s(models.Model):
+    hour_00 = models.IntegerField(default=0)
+    hour_01 = models.IntegerField(default=0)
+    hour_02 = models.IntegerField(default=0)
+    hour_03 = models.IntegerField(default=0)
+    hour_04 = models.IntegerField(default=0)
+    hour_05 = models.IntegerField(default=0)
+    hour_06 = models.IntegerField(default=0)
+    hour_07 = models.IntegerField(default=0)
+    hour_08 = models.IntegerField(default=0)
+    hour_09 = models.IntegerField(default=0)
+    hour_10 = models.IntegerField(default=0)
+    hour_11 = models.IntegerField(default=0)
+    hour_12 = models.IntegerField(default=0)
+    hour_13 = models.IntegerField(default=0)
+    hour_14 = models.IntegerField(default=0)
+    hour_15 = models.IntegerField(default=0)
+    hour_16 = models.IntegerField(default=0)
+    hour_17 = models.IntegerField(default=0)
+    hour_18 = models.IntegerField(default=0)
+    hour_19 = models.IntegerField(default=0)
+    hour_20 = models.IntegerField(default=0)
+    hour_21 = models.IntegerField(default=0)
+    hour_22 = models.IntegerField(default=0)
+    hour_23 = models.IntegerField(default=0)
+    label = models.SmallIntegerField(default=-1)
+			''' % k
+			print(model)
+	except Exception as e:
+		print("print_django_model_string error: %s" % e)
+
 if __name__ == '__main__':
 	try:
 		# dir_list = [os.path.join(SRC_DIR, sub_dir) for sub_dir in os.listdir(SRC_DIR) if not sub_dir.startswith('.')]
@@ -159,7 +196,8 @@ if __name__ == '__main__':
 		# pool.join()
 		# check_invalid_str()
 		# minutes_handle()
-		mkdir_AP()
+		# mkdir_AP()
+		print_django_model_string()
 		# add_col_AP()
 		# mkdir_date()
 		# print(add_header())
