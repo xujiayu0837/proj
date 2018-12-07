@@ -18,7 +18,7 @@ def main(dir):
 		# for filename in tqdm(os.listdir(dir)):
 		for filename in os.listdir(dir):
 			src_path = os.path.join(dir, filename)
-			data = pd.read_csv(src_path, sep='|')
+			data = pd.read_csv(src_path, sep='|', dtype={'AP': 'str'})
 			for user_mac_addr in data['user_mac_addr'].unique():
 				if user_mac_addr in USERS_LIST:
 					# print(user_mac_addr)
@@ -32,7 +32,7 @@ def main(dir):
 
 def clean_header(filename):
 	try:
-		data = pd.read_csv(os.path.join(USER_DATA_WITH_HEADER, filename), sep='|')
+		data = pd.read_csv(os.path.join(USER_DATA_WITH_HEADER, filename), sep='|', dtype={'AP': 'str'})
 		data = data[data['rss'].astype(str) != 'rss']
 		data['rss'] = data['rss'].astype(int)
 		data.to_csv(os.path.join(USER_DATA, filename), index=False, sep='|')
@@ -59,8 +59,8 @@ def clean_header(filename):
 
 if __name__ == '__main__':
 	try:
-		# dir_list = [os.path.join(MINUTES_WINDOW, sub_dir) for sub_dir in os.listdir(MINUTES_WINDOW) if not sub_dir.startswith('.')]
-		pool = Pool(4)
+		dir_list = [os.path.join(MINUTES_WINDOW, sub_dir) for sub_dir in os.listdir(MINUTES_WINDOW) if not sub_dir.startswith('.')]
+		pool = Pool()
 		# res_list = [pool.apply_async(main, (dir,)) for dir in dir_list]
 		res_list = [pool.apply_async(clean_header, (filename,)) for filename in os.listdir(USER_DATA_WITH_HEADER)]
 		pool.close()
