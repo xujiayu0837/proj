@@ -1,0 +1,9 @@
+body{width: 100%; background-color: #f0f3f4; color: #676a6d;}
+#chart{width: 100%; background-color: #f0f3f4; color: #676a6d;}
+#ap1{width: 49%; float: left; margin-top: 25px; background: #fff;}
+#ap2{width: 49%; float: left; margin-top: 25px; margin-left: 2%; background: #fff;}
+#ap11{width: 100%; height: 400px; float: left; background: #fff;}
+#ap12{width: 100%; height: 400px; float: left; background: #fff;}
+#ap21{width: 100%; height: 400px; float: left; background: #fff;}
+#ap22{width: 100%; height: 400px; float: left; background: #fff;}
+#ap-text{margin-left: 9px;}
