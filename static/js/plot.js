@@ -14,10 +14,18 @@ function user() {
 			// 指定图表的配置项和数据
 			var option = {
 			    title: {
-			        text: '按用户聚类效果图'
+			        text: '按用户聚类类1效果图'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
+			    toolbox: {
+			    	show: true,
+			    	feature: {
+			    		dataView: {},
+			    		restore: {},
+			    		saveAsImage: {}
+			    	}
+			    },
 			    // legend: {
 			    //     data:['销量']
 			    // },
@@ -84,7 +92,7 @@ function period() {
 			var myChart = echarts.init(document.getElementById('period1'));
 			var option = {
 			    title: {
-			        text: '按时间聚类效果图（7:00-9:00）'
+			        text: '按时间聚类类1效果图（7:00-9:00）'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -119,7 +127,7 @@ function period2() {
 			var myChart = echarts.init(document.getElementById('period2'));
 			var option = {
 			    title: {
-			        text: '按时间聚类效果图（11:00-13:00）'
+			        text: '按时间聚类类2效果图（11:00-13:00）'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -154,7 +162,7 @@ function period3() {
 			var myChart = echarts.init(document.getElementById('period3'));
 			var option = {
 			    title: {
-			        text: '按时间聚类效果图（17:00-19:00）'
+			        text: '按时间聚类类3效果图（17:00-19:00）'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -190,7 +198,7 @@ function loc() {
 			var myChart = echarts.init(document.getElementById('loc1'));
 			var option = {
 			    title: {
-			        text: '按地点聚类效果图1'
+			        text: '按地点聚类类1效果图'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -199,7 +207,7 @@ function loc() {
 			    // },
 			    xAxis: {
 			    	name: '时间',
-			        data: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
+			        data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
 			    },
 			    yAxis: {
 			    	name: '人次'
@@ -293,7 +301,7 @@ function loc2() {
 			var myChart = echarts.init(document.getElementById('loc2'));
 			var option = {
 			    title: {
-			        text: '按地点聚类效果图2'
+			        text: '按地点聚类类2效果图'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -302,7 +310,7 @@ function loc2() {
 			    // },
 			    xAxis: {
 			    	name: '时间',
-			        data: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
+			        data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
 			    },
 			    yAxis: {
 			    	name: '人次'
