@@ -16,6 +16,14 @@ function user1(MYCHART, user) {
 				    },
 				    backgroundColor: '#fff',
 				    tooltip: {},
+				    toolbox: {
+				    	show: true,
+				    	feature: {
+				    		dataView: {},
+				    		restore: {},
+				    		saveAsImage: {}
+				    	}
+				    },
 				    // legend: {
 				    //     data:['销量']
 				    // },
@@ -52,6 +60,14 @@ function user1(MYCHART, user) {
 				    },
 				    backgroundColor: '#fff',
 				    tooltip: {},
+				    toolbox: {
+				    	show: true,
+				    	feature: {
+				    		dataView: {},
+				    		restore: {},
+				    		saveAsImage: {}
+				    	}
+				    },
 				    // legend: {
 				    //     data:['销量']
 				    // },
@@ -92,6 +108,14 @@ function user2(MYCHART, user) {
 				    },
 				    backgroundColor: '#fff',
 				    tooltip: {},
+				    toolbox: {
+				    	show: true,
+				    	feature: {
+				    		dataView: {},
+				    		restore: {},
+				    		saveAsImage: {}
+				    	}
+				    },
 				    // legend: {
 				    //     data:['销量']
 				    // },
@@ -128,6 +152,14 @@ function user2(MYCHART, user) {
 				    },
 				    backgroundColor: '#fff',
 				    tooltip: {},
+				    toolbox: {
+				    	show: true,
+				    	feature: {
+				    		dataView: {},
+				    		restore: {},
+				    		saveAsImage: {}
+				    	}
+				    },
 				    // legend: {
 				    //     data:['销量']
 				    // },
@@ -169,12 +201,24 @@ function user5(MYCHART, user) {
 				    		type: 'pie',
 				    		data: [
 				    			{
-				    				value: 21,
-				    				name: '人多'
+				    				value: 6,
+				    				name: '非常繁忙'
+				    			},
+				    			{
+				    				value: 7,
+				    				name: '有点繁忙'
+				    			},
+				    			{
+				    				value: 8,
+				    				name: '一般'
+				    			},
+				    			{
+				    				value: 6,
+				    				name: '有点清闲'
 				    			},
 								{
-				    				value: 9,
-				    				name: '人少'
+				    				value: 3,
+				    				name: '非常清闲'
 				    			}
 				    		]
 				    	}
