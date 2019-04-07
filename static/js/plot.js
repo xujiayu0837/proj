@@ -14,18 +14,18 @@ function user() {
 			// 指定图表的配置项和数据
 			var option = {
 			    title: {
-			        text: '按用户聚类类1效果图'
+			        text: '按用户聚类类1'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
-			    toolbox: {
-			    	show: true,
-			    	feature: {
-			    		dataView: {},
-			    		restore: {},
-			    		saveAsImage: {}
-			    	}
-			    },
+			    // toolbox: {
+			    // 	show: true,
+			    // 	feature: {
+			    // 		dataView: {},
+			    // 		restore: {},
+			    // 		saveAsImage: {}
+			    // 	}
+			    // },
 			    // legend: {
 			    //     data:['销量']
 			    // },
@@ -33,14 +33,14 @@ function user() {
 			    	axisLine: {
 			    		onZero: false
 			    	},
-			    	name: 'AP',
+			    	name: '场所',
 			    	data: ['R_1','R_1','R_10','R_10','R_3','R_4','R_3','R_5','R_8','R_5','R_29','R_2','R_2','R_10','R_29','R_4','T_1','S_2','T_4','T_4','S_2','S_1','T_6','S_1','T_1','T_3','T_3','R_8']
 			    },
 			  //   xAxis: {
 					// data: ['mac_1', 'mac_2', 'mac_3', 'mac_4', 'mac_5', 'mac_6', 'mac_7', 'mac_8', 'mac_9', 'mac_10', 'mac_11', 'mac_12', 'mac_13', 'mac_14', 'mac_15', 'mac_16', 'mac_17', 'mac_18', 'mac_19', 'mac_20', 'mac_21', 'mac_22', 'mac_23', 'mac_24', 'mac_25', 'mac_26', 'mac_27', 'mac_28', 'mac_29', 'mac_30', 'mac_31', 'mac_32', 'mac_33', 'mac_34', 'mac_35', 'mac_36', 'mac_37', 'mac_38', 'mac_39', 'mac_40']
 			  //   },
 			    yAxis: {
-			    	name: 'rss',
+			    	name: '无线信号强度',
 			    	scale: true
 			    },
 			    series: userSeries
@@ -92,7 +92,7 @@ function period() {
 			var myChart = echarts.init(document.getElementById('period1'));
 			var option = {
 			    title: {
-			        text: '按时间聚类类1效果图（7:00-9:00）'
+			        text: '按时间聚类类1（7:00-9:00）'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -127,7 +127,7 @@ function period2() {
 			var myChart = echarts.init(document.getElementById('period2'));
 			var option = {
 			    title: {
-			        text: '按时间聚类类2效果图（11:00-13:00）'
+			        text: '按时间聚类类2（11:00-13:00）'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -162,7 +162,7 @@ function period3() {
 			var myChart = echarts.init(document.getElementById('period3'));
 			var option = {
 			    title: {
-			        text: '按时间聚类类3效果图（17:00-19:00）'
+			        text: '按时间聚类类3（17:00-19:00）'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -198,7 +198,7 @@ function loc() {
 			var myChart = echarts.init(document.getElementById('loc1'));
 			var option = {
 			    title: {
-			        text: '按地点聚类类1效果图'
+			        text: '按地点聚类类1'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
@@ -301,7 +301,7 @@ function loc2() {
 			var myChart = echarts.init(document.getElementById('loc2'));
 			var option = {
 			    title: {
-			        text: '按地点聚类类2效果图'
+			        text: '按地点聚类类2'
 			    },
 			    backgroundColor: '#fff',
 			    tooltip: {},
